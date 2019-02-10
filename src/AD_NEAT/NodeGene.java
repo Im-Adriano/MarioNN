@@ -18,9 +18,17 @@ public class NodeGene {
         this.id = id;
     }
 
+    public NodeGene(TYPE type, int id, float layer){
+        super();
+        this.type = type;
+        this.id = id;
+        this.layer = layer;
+    }
+
     public NodeGene(NodeGene gene) {
         this.type = gene.type;
         this.id = gene.id;
+        this.layer = gene.layer;
     }
 
     public TYPE getType() {
@@ -32,7 +40,7 @@ public class NodeGene {
     }
 
     public NodeGene copy(){
-        return new NodeGene(type, id);
+        return new NodeGene(type, id, layer);
     }
 
     public float getLayer() {

@@ -252,7 +252,7 @@ public class Genome {
 
         for(NodeGene node : orderedGenes){
             if(node.getType() != NodeGene.TYPE.SENSOR) {
-                node.setInputSum((float)(1 / (1 + Math.pow(Math.E, -node.getInputSum()))) ) ;
+                node.setInputSum((float)(1 / (1 + Math.pow(Math.E, -node.getInputSum())))  ) ;
             }
             for(ConnectionGene con : connections.values()){
                 if(con.getInNode() == node.getId() && con.isExpressed()){

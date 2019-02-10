@@ -86,7 +86,7 @@ public class Mario extends Collider{
     public void show(){
         if(!dead) {
 //        xLocation=xLocation+speed;
-            distance += 1/(origin-xLocation);
+            distance += Math.abs(1/(origin-xLocation));
             if(jump != 0){
                 distance += .01;
             }

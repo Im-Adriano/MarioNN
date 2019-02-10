@@ -121,7 +121,7 @@ public abstract class GeneticAlgorithm {
                 child.mutation(random);
             }
             if (random.nextFloat() < ADD_CONNECTION_RATE) {
-                child.addConnectionMutation(random, connectionInnovation, 10);
+                child.addConnectionMutation(random, connectionInnovation, 30);
             }
             if (random.nextFloat() < ADD_NODE_RATE) {
                 child.addNodeMutation(random, connectionInnovation);
