@@ -1,12 +1,13 @@
-package AD_NEAT;
+package AD_Neural_Network_Stuff.AD_NEAT;
+
+import AD_Neural_Network_Stuff.Brain;
+import AD_Neural_Network_Stuff.GA;
 
 import java.util.*;
-import AD_NEAT.Util;
 
-public abstract class GeneticAlgorithm {
+public class GeneticAlgorithm implements GA {
 
     private Util.GenomeFitnessComparator genomeFitnessComparator = new Util.GenomeFitnessComparator();
-
 
     private Innovations connectionInnovation;
 
@@ -24,11 +25,12 @@ public abstract class GeneticAlgorithm {
 
     public List<Genome> genomes;
     private List<Genome> nextGenerationGenomes;
-
     private List<Species> species;
 
     private Map<Genome, Species> mappedGenomesToSpecies;
     private Map<Genome, Float> mappedScoreToGenomes;
+    private Map<Integer, Genome> IDtoGenome;
+
     private float highestScore;
     private Genome fittestGenome;
 
@@ -43,6 +45,7 @@ public abstract class GeneticAlgorithm {
         mappedGenomesToSpecies = new HashMap<>();
         mappedScoreToGenomes = new HashMap<>();
         species = new ArrayList<>();
+        IDtoGenome = new HashMap<>();
     }
 
     /**
@@ -173,12 +176,25 @@ public abstract class GeneticAlgorithm {
         return highestScore;
     }
 
-    public Genome getFittestGenome() {
+    public Genome getFittest() {
         return fittestGenome;
     }
 
-    protected abstract float evaluateGenome(Genome genome);
+    public Genome getGenome(int id){
+        return IDtoGenome.get(id);
+    }
 
+    public void remap(){
+        IDtoGenome.clear();
+        int Counter = 0;
+        for (Genome genome : this.genomes) {
+            IDtoGenome.put(Counter, genome);
+            Counter++;
+        }
+    }
 
+    public float evaluateGenome(Brain genome) {
+        return genome.getFitness();
+    }
 
 }

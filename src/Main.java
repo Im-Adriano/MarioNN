@@ -1,12 +1,9 @@
-import AD_NEAT.ConnectionGene;
-import AD_NEAT.Genome;
-import AD_NEAT.Innovations;
-import AD_NEAT.NodeGene;
+import AD_Neural_Network_Stuff.AD_NEAT.GeneticAlgorithm;
+import AD_Neural_Network_Stuff.AD_NEAT.Genome;
+import AD_Neural_Network_Stuff.AD_NEAT.Innovations;
+import AD_Neural_Network_Stuff.AD_NEAT.NodeGene;
+import AD_Neural_Network_Stuff.GA;
 import processing.core.PApplet;
-import processing.core.PImage;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class Main extends PApplet{
 
@@ -21,7 +18,7 @@ public class Main extends PApplet{
         start.addNodeGene(new NodeGene(NodeGene.TYPE.OUTPUT, 4));
         Innovations innovations = new Innovations();
 
-        ga = new GA(100, start, innovations);
+        ga = new GeneticAlgorithm(100, start, innovations);
         PApplet.main("Main", args);
 
     }
@@ -36,7 +33,6 @@ public class Main extends PApplet{
     int count = 0;
     public void draw(){
         System.out.println("Generation: " + count);
-        ga.print();
         ga.evaluate();
         count++;
     }

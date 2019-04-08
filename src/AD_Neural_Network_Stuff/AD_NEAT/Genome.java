@@ -1,13 +1,15 @@
-package AD_NEAT;
+package AD_Neural_Network_Stuff.AD_NEAT;
+
+import AD_Neural_Network_Stuff.Brain;
 
 import java.util.*;
 
-public class Genome {
+public class Genome implements Brain {
     private Map<Integer, ConnectionGene> connections;
     private Map<Integer, NodeGene> nodes;
     private final float PROBABILITY_PERTURBING = 0.9f;
     private float fitness = 0f;
-    private static Util.NodeLayerCompare nodeLayerCompare = new Util.NodeLayerCompare();
+    private Util.NodeLayerCompare nodeLayerCompare = new Util.NodeLayerCompare();
 
     public Genome(){
         nodes = new HashMap<>();
@@ -226,7 +228,7 @@ public class Genome {
                     excessGenes++;
                 }
             }
-        }catch (ArrayIndexOutOfBoundsException e){
+        }catch (IndexOutOfBoundsException e){
             matchingGenes = 1;
         }
         avgWeightDiff /= matchingGenes;
@@ -248,7 +250,7 @@ public class Genome {
 
         List<NodeGene> orderedGenes = new ArrayList<>(nodes.values());
 
-        Collections.sort(orderedGenes, nodeLayerCompare);
+        orderedGenes.sort(nodeLayerCompare);
 
         for(NodeGene node : orderedGenes){
             if(node.getType() != NodeGene.TYPE.SENSOR) {

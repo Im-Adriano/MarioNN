@@ -253,6 +253,10 @@ public class Mario extends Collider{
         return g;
     }
 
+    public float getJump() {
+        return jump;
+    }
+
     public void reset(){
         xLocation = startX;
         yLocation = startY;
