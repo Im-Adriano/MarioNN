@@ -1,39 +1,31 @@
-import AD_Neural_Network_Stuff.AD_NEAT.GeneticAlgorithm;
-import AD_Neural_Network_Stuff.AD_NEAT.Genome;
-import AD_Neural_Network_Stuff.AD_NEAT.Innovations;
-import AD_Neural_Network_Stuff.AD_NEAT.NodeGene;
-import AD_Neural_Network_Stuff.GA;
-import processing.core.PApplet;
+import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
-public class Main extends PApplet{
+public class Main extends Application {
 
-    static GA ga;
-
-    public static void main(String[] args){
-        Genome start = new Genome();
-        start.addNodeGene(new NodeGene(NodeGene.TYPE.SENSOR, 0));
-        start.addNodeGene(new NodeGene(NodeGene.TYPE.SENSOR, 1));
-        start.addNodeGene(new NodeGene(NodeGene.TYPE.SENSOR, 2));
-        start.addNodeGene(new NodeGene(NodeGene.TYPE.SENSOR, 3));
-        start.addNodeGene(new NodeGene(NodeGene.TYPE.OUTPUT, 4));
-        Innovations innovations = new Innovations();
-
-        ga = new GeneticAlgorithm(100, start, innovations);
-        PApplet.main("Main", args);
-
+    @Override
+    public void start(Stage primaryStage) throws Exception{
+        Parent root = FXMLLoader.load(getClass().getResource("start.fxml"));
+        primaryStage.setTitle("MarioNN");
+        primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent t) {
+                Platform.exit();
+                System.exit(0);
+            }
+        });
+        primaryStage.setScene(new Scene(root));
+        primaryStage.show();
     }
 
-    public void settings(){
-        size(700,700);
-    }
 
-    public void setup(){
-
-    }
-    int count = 0;
-    public void draw(){
-        System.out.println("Generation: " + count);
-        ga.evaluate();
-        count++;
+    public static void main(String[] args) {
+        launch(args);
     }
 }

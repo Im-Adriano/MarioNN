@@ -3,6 +3,7 @@ import AD_Neural_Network_Stuff.AD_NEAT.*;
 
 import AD_Neural_Network_Stuff.AD_NN.NeuralNetwork;
 import processing.core.PApplet;
+import processing.core.PGraphics;
 import processing.core.PImage;
 import marioGame.*;
 
@@ -13,20 +14,21 @@ public class marioMain extends PApplet{
 
     private PImage pipe, ground, ground2;
 
-    private boolean dynamic = true;
-    private boolean world = false;
+    public static boolean dynamic = false;
+    public static boolean world = false;
 
     private int width = 640;
     private int height = 320;
 
     private float x = width/2f;
 
-    private static PApplet mainApplet;
+    public PApplet mainApplet;
 
     private boolean keyup = false;
     private boolean keyright = false;
     private boolean keyleft = false;
     private boolean keydown = false;
+
     private boolean once = true;
     private List<Pipe> pipes;
     private List<Ground> groundTiles;
@@ -36,8 +38,8 @@ public class marioMain extends PApplet{
     private List<Float> worldView = new ArrayList<>(Collections.nCopies(NumOfGridSpaces, -1f));
     private ArrayList<Float> inputs = new ArrayList<>(Collections.nCopies(4, -1f));
     private Random random;
-    private int generation = 0;
-    private GA ga;
+    public int generation;
+    public GA ga;
     private DecimalFormat df = new DecimalFormat("#.00");
     private HashMap<Integer, Point> nodePositions = new HashMap<>();
     private int pauseCounter = 0;
@@ -52,7 +54,10 @@ public class marioMain extends PApplet{
 
     public void setup()
     {
+
         mainApplet = this;
+        mainApplet.frame.setResizable(false);
+        setDefaultClosePolicy(this, false);
         random = new Random();
 
         Map<Mario.Animations, PImage> marioAnimations = new HashMap<>();
@@ -78,7 +83,7 @@ public class marioMain extends PApplet{
         ground2 = loadImage("pics/ground2.png");
         pipe = loadImage("pics/pipe.png");
 
-        frameRate(120);
+        frameRate(240);
 
         background(200);
 
@@ -109,10 +114,10 @@ public class marioMain extends PApplet{
             start.addNodeGene(new NodeGene(NodeGene.TYPE.OUTPUT, i + 3, 1));
             Innovations innovations = new Innovations();
 
-            ga = new AD_Neural_Network_Stuff.AD_NEAT.GeneticAlgorithm(100, start, innovations);
+            ga = new AD_Neural_Network_Stuff.AD_NEAT.GeneticAlgorithm(100, start, innovations, world);
             ga.remap();
         }else if(world){
-            ga = new AD_Neural_Network_Stuff.AD_NN.GeneticAlgorithm(100, 200, 2, 8, 5);
+            ga = new AD_Neural_Network_Stuff.AD_NN.GeneticAlgorithm(100, 200, 2, 8, 5, world);
             ga.remap();
         }else if(dynamic){
             Genome start = new Genome();
@@ -127,10 +132,19 @@ public class marioMain extends PApplet{
             start.addNodeGene(new NodeGene(NodeGene.TYPE.OUTPUT, i + 3, 1));
             Innovations innovations = new Innovations();
 
-            ga = new AD_Neural_Network_Stuff.AD_NEAT.GeneticAlgorithm(100, start, innovations);
+            if(ga == null){
+                ga = new AD_Neural_Network_Stuff.AD_NEAT.GeneticAlgorithm(100, start, innovations, world);
+            }else{
+                prepareToVisualize(ga.getFittest());
+            }
+
             ga.remap();
         }else{
-            ga = new AD_Neural_Network_Stuff.AD_NN.GeneticAlgorithm(100, 4, 2, 8, 5);
+            if(ga == null){
+                ga = new AD_Neural_Network_Stuff.AD_NN.GeneticAlgorithm(100, 4, 2, 8, 5, world);
+            }else{
+                prepareToVisualize(ga.getFittest());
+            }
             ga.remap();
         }
         textFont(createFont("Arial",15,true),15);
@@ -138,12 +152,16 @@ public class marioMain extends PApplet{
 
     public void draw()
     {
+        if(ga.getGeneration() > generation){
+            mainApplet.noLoop();
+        }
+
         background(200);
         worldView.replaceAll(e -> e = -1f);
 
 
         fill(0);
-        text("Generation: " + generation,  25, 100);
+        text("Generation: " + ga.getGeneration(),  25, 100);
         text("Highest Fitness: " + df.format(ga.getHighestFitness()), 25, 125);
 
 
@@ -276,7 +294,6 @@ public class marioMain extends PApplet{
                 ga.evaluate();
                 ga.remap();
 
-                generation++;
                 x = width/2f;
                 prepareToVisualize(ga.getFittest());
             }
@@ -302,6 +319,34 @@ public class marioMain extends PApplet{
         }
     }
 
+    public static final void setDefaultClosePolicy(PApplet pa, boolean keepOpen) {
+        final Object surf = pa.getSurface().getNative();
+        final PGraphics canvas = pa.getGraphics();
+
+        if (canvas.isGL()) {
+            final com.jogamp.newt.Window w = (com.jogamp.newt.Window) surf;
+
+            for (com.jogamp.newt.event.WindowListener wl : w.getWindowListeners())
+                if (wl.toString().startsWith("processing.opengl.PSurfaceJOGL"))
+                    w.removeWindowListener(wl);
+
+            w.setDefaultCloseOperation(keepOpen?
+                    com.jogamp.nativewindow.WindowClosingProtocol.WindowClosingMode
+                            .DO_NOTHING_ON_CLOSE :
+                    com.jogamp.nativewindow.WindowClosingProtocol.WindowClosingMode
+                            .DISPOSE_ON_CLOSE);
+        } else if (canvas instanceof processing.awt.PGraphicsJava2D) {
+            final javax.swing.JFrame f = (javax.swing.JFrame)
+                    ((processing.awt.PSurfaceAWT.SmoothCanvas) surf).getFrame();
+
+            for (java.awt.event.WindowListener wl : f.getWindowListeners())
+                if (wl.toString().startsWith("processing.awt.PSurfaceAWT"))
+                    f.removeWindowListener(wl);
+
+            f.setDefaultCloseOperation(keepOpen?
+                    f.DO_NOTHING_ON_CLOSE : f.DISPOSE_ON_CLOSE);
+        }
+    }
 
     public void keyPressed() {
         if (key == CODED) {

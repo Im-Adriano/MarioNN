@@ -2,11 +2,12 @@ package AD_Neural_Network_Stuff.AD_NN;
 
 import AD_Neural_Network_Stuff.Brain;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class NeuralNetwork implements Brain {
+public class NeuralNetwork implements Brain, Serializable {
     private float[][] layers;
     private float[][][] NeuronWeights;
     private float[][] BiasWeights;

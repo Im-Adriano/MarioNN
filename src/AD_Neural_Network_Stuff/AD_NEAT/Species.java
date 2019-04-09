@@ -1,10 +1,11 @@
 package AD_Neural_Network_Stuff.AD_NEAT;
 
+import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
-public class Species {
+public class Species implements Serializable {
 
     public Genome mascot;
     public List<Genome> members;

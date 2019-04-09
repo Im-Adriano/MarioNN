@@ -15,4 +15,8 @@ public interface GA {
     float getHighestFitness();
 
     Brain getFittest();
+
+    int getGeneration();
+
+    boolean usingWorldView();
 }

@@ -1,6 +1,8 @@
 package AD_Neural_Network_Stuff.AD_NEAT;
 
-public class NodeGene {
+import java.io.Serializable;
+
+public class NodeGene implements Serializable {
     public enum TYPE {
         SENSOR,
         HIDDEN,

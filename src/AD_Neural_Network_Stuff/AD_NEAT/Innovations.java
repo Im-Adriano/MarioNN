@@ -1,9 +1,10 @@
 package AD_Neural_Network_Stuff.AD_NEAT;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Innovations {
+public class Innovations implements Serializable {
     private int currentInnovation = 0;
 
     private Map<ConnectionGene, Integer> ConnectionInovations;

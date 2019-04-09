@@ -2,9 +2,10 @@ package AD_Neural_Network_Stuff.AD_NEAT;
 
 import AD_Neural_Network_Stuff.Brain;
 
+import java.io.Serializable;
 import java.util.*;
 
-public class Genome implements Brain {
+public class Genome implements Brain, Serializable {
     private Map<Integer, ConnectionGene> connections;
     private Map<Integer, NodeGene> nodes;
     private final float PROBABILITY_PERTURBING = 0.9f;

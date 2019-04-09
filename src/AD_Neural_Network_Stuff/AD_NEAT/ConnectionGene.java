@@ -1,6 +1,8 @@
 package AD_Neural_Network_Stuff.AD_NEAT;
 
-public class ConnectionGene {
+import java.io.Serializable;
+
+public class ConnectionGene implements Serializable {
     private int inNode;
     private int outNode;
     private float weight;

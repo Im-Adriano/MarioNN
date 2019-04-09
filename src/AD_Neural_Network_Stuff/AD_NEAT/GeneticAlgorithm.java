@@ -3,9 +3,10 @@ package AD_Neural_Network_Stuff.AD_NEAT;
 import AD_Neural_Network_Stuff.Brain;
 import AD_Neural_Network_Stuff.GA;
 
+import java.io.Serializable;
 import java.util.*;
 
-public class GeneticAlgorithm implements GA {
+public class GeneticAlgorithm implements GA, Serializable {
 
     private Util.GenomeFitnessComparator genomeFitnessComparator = new Util.GenomeFitnessComparator();
 
@@ -34,7 +35,11 @@ public class GeneticAlgorithm implements GA {
     private float highestScore;
     private Genome fittestGenome;
 
-    public GeneticAlgorithm(int populationSize, Genome startingGenome, Innovations connectionInnovation) {
+    private int Generation = 0;
+
+    private boolean world;
+
+    public GeneticAlgorithm(int populationSize, Genome startingGenome, Innovations connectionInnovation, boolean world) {
         this.populationSize = populationSize;
         this.connectionInnovation = connectionInnovation;
         genomes = new ArrayList<>(populationSize);
@@ -46,12 +51,14 @@ public class GeneticAlgorithm implements GA {
         mappedScoreToGenomes = new HashMap<>();
         species = new ArrayList<>();
         IDtoGenome = new HashMap<>();
+        this.world = world;
     }
 
     /**
      * Runs one generation
      */
     public void evaluate() {
+
         for (Species s : species) {
             s.reset(random);
         }
@@ -134,6 +141,7 @@ public class GeneticAlgorithm implements GA {
 
         genomes = nextGenerationGenomes;
         nextGenerationGenomes = new ArrayList<>();
+        Generation++;
     }
 
     private Species getRandomSpeciesBiasedAdjustedFitness(Random random) {
@@ -197,4 +205,11 @@ public class GeneticAlgorithm implements GA {
         return genome.getFitness();
     }
 
+    public int getGeneration() {
+        return Generation;
+    }
+
+    public boolean usingWorldView() {
+        return world;
+    }
 }

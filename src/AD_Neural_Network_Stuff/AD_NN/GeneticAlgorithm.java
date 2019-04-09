@@ -3,9 +3,10 @@ package AD_Neural_Network_Stuff.AD_NN;
 import AD_Neural_Network_Stuff.Brain;
 import AD_Neural_Network_Stuff.GA;
 
+import java.io.Serializable;
 import java.util.*;
 
-public class GeneticAlgorithm implements GA {
+public class GeneticAlgorithm implements GA, Serializable {
     List<NeuralNetwork> neuralNetworks;
     Random random = new Random();
     private int GenerationSize;
@@ -20,14 +21,18 @@ public class GeneticAlgorithm implements GA {
     private Map<Integer, Brain> IDtoGenome;
     private NeuralNetwork TopCarBrain;
     private Util.NNFitnessComparator comparator = new Util.NNFitnessComparator();
-    private int inputNum, hiddenLayers, hiddenLayerSize, outputNum;
+    private int inputNum, hiddenLayers, hiddenLayerSize, outputNum, Generation = 0;
+
+    private boolean world;
+
     // Use this for initialization
-    public GeneticAlgorithm(int GenerationSize, int inputNum, int hiddenLayers, int hiddenLayerSize, int outputNum)
+    public GeneticAlgorithm(int GenerationSize, int inputNum, int hiddenLayers, int hiddenLayerSize, int outputNum, boolean world)
     {
         this.inputNum = inputNum;
         this.hiddenLayers = hiddenLayers;
         this.hiddenLayerSize = hiddenLayerSize;
         this.outputNum = outputNum;
+        this.world = world;
 
         this.GenerationSize = GenerationSize;
         this.NumElite = (int)(GenerationSize * .05f);
@@ -117,6 +122,7 @@ public class GeneticAlgorithm implements GA {
 
         neuralNetworks.clear();
         neuralNetworks = NewGeneration;
+        Generation++;
     }
 
     public float evaluateGenome(Brain genome) {
@@ -128,4 +134,12 @@ public class GeneticAlgorithm implements GA {
     }
 
     public NeuralNetwork getFittest(){return TopCarBrain;}
+
+    public int getGeneration() {
+        return Generation;
+    }
+
+    public boolean usingWorldView() {
+        return world;
+    }
 }
