@@ -37,7 +37,7 @@ public class Mario extends Collider{
 
     private int id;
 
-    private float speed = 0;
+    private float speed = 0f;
     private float jump;
     private float g;
     private int LR =0;
@@ -85,7 +85,7 @@ public class Mario extends Collider{
 
     public void show(){
         if(!dead) {
-//        xLocation=xLocation+speed;
+//            xLocation=xLocation+speed;
             distance += Math.abs(1/(origin-xLocation));
             if(jump != 0){
                 distance += .01;
@@ -193,10 +193,10 @@ public class Mario extends Collider{
 
             if (keydown) {
                 if (LR == 1) {
-                    frame.image(duckright, xLocation, yLocation + 13);
+                    frame.image(duckright, xLocation, yLocation);
                 }
                 if (LR == 0) {
-                    frame.image(duckleft, xLocation, yLocation + 13);
+                    frame.image(duckleft, xLocation, yLocation);
                 }
             }
 
@@ -225,6 +225,13 @@ public class Mario extends Collider{
     }
 
     public void setKeydown(boolean keydown) {
+        if(keydown != this.keydown && keydown){
+            height = 15;
+            yLocation+=13;
+        }else if(keydown != this.keydown){
+            height = 28;
+            yLocation-=13;
+        }
         this.keydown = keydown;
     }
 
@@ -267,6 +274,7 @@ public class Mario extends Collider{
         keydown = false;
         speed = 0;
         distance = 0;
+        height = 28;
     }
 
     public float getDistance() {

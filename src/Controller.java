@@ -1,7 +1,5 @@
 import javafx.event.ActionEvent;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.Slider;
+import javafx.scene.control.*;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.fxml.FXML;
@@ -18,11 +16,15 @@ public class Controller {
     @FXML CheckBox NEAT;
     @FXML Button clearGA;
     @FXML Slider numOfGenSlider;
+    @FXML ChoiceBox saveSelect;
+    @FXML Label numGenLabel;
+    @FXML Label saveLabel;
 
-    ArrayList<marioMain> windows = new ArrayList<>();
-    marioMain current = new marioMain();
+    private ArrayList<AI_Plays_Mario> windows = new ArrayList<AI_Plays_Mario>();
+    private AI_Plays_Mario current = new AI_Plays_Mario();
+    private Play_Mario user;
 
-    public void saveState(ActionEvent actionEvent) {
+    public void saveState() {
         try {
             FileChooser chooser= new FileChooser();
             chooser.setTitle("Save GA State");
@@ -30,7 +32,7 @@ public class Controller {
             FileOutputStream fileOut =
                     new FileOutputStream(path);
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
-            out.writeObject(marioMain.ga);
+            out.writeObject(((AI_Plays_Mario)saveSelect.getValue()).ga);
             out.close();
             fileOut.close();
         } catch (Exception i) {
@@ -38,7 +40,7 @@ public class Controller {
         }
     }
 
-    public void loadState(ActionEvent actionEvent) {
+    public void loadState() {
         try {
             FileChooser chooser= new FileChooser();
             chooser.setTitle("Open GA State");
@@ -54,12 +56,13 @@ public class Controller {
             }
             if(current.ga.usingWorldView()){
                 worldView.setSelected(true);
-                marioMain.world = true;
+                current.world = true;
             }else{
                 worldView.setSelected(false);
-                marioMain.world = false;
+                current.world = false;
             }
 
+            clearGA.setDisable(false);
             NEAT.setDisable(true);
             worldView.setDisable(true);
             in.close();
@@ -69,39 +72,88 @@ public class Controller {
         }
     }
 
-    public void startSim(ActionEvent actionEvent) {
-        run.setDisable(true);
-        worldView.setDisable(true);
-        NEAT.setDisable(true);
-        loadState.setDisable(true);
+    public void startSim() {
+        saveSelect.setDisable(false);
         saveState.setDisable(false);
         clearGA.setDisable(true);
         numOfGenSlider.setDisable(true);
+        NEAT.setDisable(false);
+        worldView.setDisable(false);
+        saveLabel.setDisable(false);
+
         current.generation = (int)numOfGenSlider.getValue();
         windows.add(current);
+        saveSelect.getItems().add(current);
         PApplet.runSketch(new String[]{""}, current);
-        current = new marioMain();
+        current = new AI_Plays_Mario();
+        numOfGenSlider.setDisable(false);
+
     }
 
     public void useWorldView(ActionEvent actionEvent) {
         CheckBox temp = (CheckBox)(actionEvent.getSource());
-        marioMain.world = temp.isSelected();
+        current.world = temp.isSelected();
     }
 
     public void useNEAT(ActionEvent actionEvent) {
         CheckBox temp = (CheckBox)(actionEvent.getSource());
-        marioMain.dynamic = temp.isSelected();
+        current.dynamic = temp.isSelected();
     }
 
-    public void clearGA(ActionEvent actionEvent) {
+    public void clearGA() {
         run.setDisable(false);
         worldView.setDisable(false);
         NEAT.setDisable(false);
         loadState.setDisable(false);
-        saveState.setDisable(true);
+        clearGA.setDisable(true);
 
         current.ga = null;
     }
 
 
+    public void runAll(ActionEvent actionEvent) {
+        saveSelect.setDisable(false);
+        saveState.setDisable(false);
+        clearGA.setDisable(true);
+        numOfGenSlider.setDisable(true);
+        NEAT.setDisable(false);
+        worldView.setDisable(false);
+        saveLabel.setDisable(false);
+
+        ArrayList<AI_Plays_Mario> temp = new ArrayList<>();
+
+        current = new AI_Plays_Mario();
+        current.world = true;
+        current.dynamic = true;
+        current.generation = (int)numOfGenSlider.getValue();
+        temp.add(current);
+        current = new AI_Plays_Mario();
+        current.world = false;
+        current.dynamic = true;
+        current.generation = (int)numOfGenSlider.getValue();
+        temp.add(current);
+        current = new AI_Plays_Mario();
+        current.world = true;
+        current.dynamic = false;
+        current.generation = (int)numOfGenSlider.getValue();
+        temp.add(current);
+        current = new AI_Plays_Mario();
+        current.world = false;
+        current.dynamic = false;
+        current.generation = (int)numOfGenSlider.getValue();
+        temp.add(current);
+
+        numOfGenSlider.setDisable(false);
+
+        for(AI_Plays_Mario m : temp) {
+            saveSelect.getItems().add(m);
+            PApplet.runSketch(new String[]{""}, m);
+            windows.add(m);
+        }
+    }
+
+    public void userPlay(ActionEvent actionEvent) {
+        user = new Play_Mario();
+        PApplet.runSketch(new String[]{""}, user);
+    }
 }

@@ -5,23 +5,16 @@ import processing.core.PImage;
 
 public class Pipe extends Collider {
     private PApplet frame;
-    private boolean tall;
     private PImage sprite;
 
-    public Pipe(float xLocation, float yLocation, PApplet frame, PImage sprite, boolean tall){
+    public Pipe(float xLocation, float yLocation, PApplet frame, PImage sprite){
         super(48, 32, xLocation, yLocation);
         this.frame = frame;
         this.sprite = sprite;
-        this.tall = tall;
     }
 
-
     public void show(){
-        if(!tall){
-            frame.image(sprite, xLocation, yLocation);
-        }else{
-
-        }
+        frame.image(sprite, xLocation, yLocation);
     }
 
     public void reset(){

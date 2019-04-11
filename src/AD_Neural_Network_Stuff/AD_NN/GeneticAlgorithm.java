@@ -11,7 +11,7 @@ public class GeneticAlgorithm implements GA, Serializable {
     Random random = new Random();
     private int GenerationSize;
     private int NumElite;
-    private float PercentMutate = .05f;
+    private float PercentMutate = .1f;
 
     private float TopFit = 0;
     private float TopGenFit = 0;

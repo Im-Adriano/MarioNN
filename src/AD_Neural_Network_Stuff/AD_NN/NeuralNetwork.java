@@ -89,7 +89,7 @@ public class NeuralNetwork implements Brain, Serializable {
                 NeuronWeights[i][j] = new float[layers[i].length];
                 for (int k = 0; k < layers[i].length; k++)
                 {
-                    NeuronWeights[i][j][k] = (float)(rand.nextDouble() -.5f);
+                    NeuronWeights[i][j][k] = (rand.nextFloat() * 4f - 2f);
                 }
             }
         }
@@ -103,7 +103,7 @@ public class NeuralNetwork implements Brain, Serializable {
             BiasWeights[i] = new float[layers[i + 1].length];
             for (int j = 0; j < layers[i + 1].length; j++)
             {
-                BiasWeights[i][j] = (float)(rand.nextDouble() - .5f);
+                BiasWeights[i][j] = (rand.nextFloat() * 4f - 2f);
             }
         }
     }

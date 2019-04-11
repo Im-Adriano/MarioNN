@@ -20,10 +20,11 @@ public abstract class Collider {
     public int checkCollision(Collider other){
         if(xLocation + width > other.xLocation
                 && xLocation < other.xLocation + other.width
-                && yLocation - height > other.yLocation - other.height){
+                && yLocation + height > other.yLocation
+                && yLocation < other.yLocation + other.height){
             return 1;
         }
-        else if(yLocation - height < other.yLocation - other.height
+        else if(yLocation + height <= other.yLocation
                 && xLocation + width > other.xLocation
                 && xLocation < other.xLocation + other.width){
             return 2;
@@ -35,6 +36,10 @@ public abstract class Collider {
 
     public float getHeight() {
         return height;
+    }
+
+    public void setHeight(float height) {
+        this.height = height;
     }
 
     public float getWidth() {
