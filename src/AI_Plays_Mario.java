@@ -103,7 +103,7 @@ public class AI_Plays_Mario extends PApplet{
             marios.add(new Mario( width/2f, height-60, mainApplet, marioAnimations, i));
         }
 
-        bullet = new Bullet((width + (random.nextInt(width / scale) * scale)), height-115, mainApplet, smallBullet);
+        bullet = new Bullet((width + (random.nextInt(width / scale) * scale)), height-150, mainApplet, smallBullet);
 
         if(dynamic && world) {
             Genome start = new Genome();

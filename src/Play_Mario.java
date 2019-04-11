@@ -90,7 +90,7 @@ public class Play_Mario extends PApplet{
             groundTiles.add(new Ground(i * 16, height-32, mainApplet, ground, ground2));
         }
 
-        bullet = new Bullet((width + (random.nextInt(width / scale) * scale)), height-115, mainApplet, smallBullet);
+        bullet = new Bullet((width + (random.nextInt(width / scale) * scale)), height-130, mainApplet, smallBullet);
 
 
         textFont(createFont("Arial",15,true),15);
@@ -99,8 +99,7 @@ public class Play_Mario extends PApplet{
     public void draw()
     {
         background(200);
-
-        float maxSpeed = mario.getSpeed();
+        float maxSpeed = 1.47f;
 
         fill(0);
         text("Generation: " + generation,  25, 100);
@@ -135,23 +134,7 @@ public class Play_Mario extends PApplet{
             bullet.show();
             bullet.setxLocation(bullet.getxLocation() - maxSpeed*1.5f);
             if(bullet.getxLocation() < 0 - bullet.getWidth()){
-                int xLoc = (width + (random.nextInt(width / scale) * scale));
-                for(int i = 0; i < 250; i++) {
-                    boolean good = true;
-                    for(Pipe q : pipes){
-                        if(xLoc == q.getxLocation()){
-                            good = false;
-                            break;
-                        }
-                    }
-                    if(good){
-                        bullet.setxLocation(xLoc);
-                        bullet.setyLocation(random.nextInt(height/scale/3)*scale + 2*height/3);
-                        break;
-                    }else{
-                        xLoc = (width + (random.nextInt(width / scale) * scale));
-                    }
-                }
+                bullet.setxLocation(width + (random.nextInt(width / scale) * scale));
             }
         }
 
@@ -178,7 +161,8 @@ public class Play_Mario extends PApplet{
             mario.setKeyup(keyUp);
             mario.show();
 
-            maxSpeed = mario.getSpeed();
+
+
             boolean onTop = false;
 
             mario.setxLocation(mario.getxLocation() - maxSpeed + mario.getSpeed());

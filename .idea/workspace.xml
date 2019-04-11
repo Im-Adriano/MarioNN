@@ -10,32 +10,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4f5ae853-b413-4e8f-bd1a-7278ecadd2d5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Play_Mario.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/marioGame/Bullet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pics/bigBullet.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pics/smallBullet.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/MarioNN_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/MarioNN_jar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MarioNN/MarioNN.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MarioNN_jar/MarioNN.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MarioNN_jar/MarioNN.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MarioNN_jar/MarioNN_jar.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MarioNN/AD_Neural_Network_Stuff/AD_NN/GeneticAlgorithm.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MarioNN/AD_Neural_Network_Stuff/AD_NN/GeneticAlgorithm.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MarioNN/AD_Neural_Network_Stuff/AD_NN/NeuralNetwork.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MarioNN/AD_Neural_Network_Stuff/AD_NN/NeuralNetwork.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MarioNN/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MarioNN/Controller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MarioNN/META-INF/MANIFEST.MF" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MarioNN/marioGame/Collider.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MarioNN/marioGame/Collider.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MarioNN/marioGame/Pipe.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MarioNN/marioGame/Pipe.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MarioNN/marioMain.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MarioNN/start.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MarioNN/start.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AD_Neural_Network_Stuff/AD_NN/GeneticAlgorithm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AD_Neural_Network_Stuff/AD_NN/GeneticAlgorithm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AD_Neural_Network_Stuff/AD_NN/NeuralNetwork.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AD_Neural_Network_Stuff/AD_NN/NeuralNetwork.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/marioGame/Collider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/marioGame/Collider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/marioGame/Mario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/marioGame/Mario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/marioGame/Pipe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/marioGame/Pipe.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/marioMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AI_Plays_Mario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/start.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/start.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MarioNN/AI_Plays_Mario.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MarioNN/AI_Plays_Mario.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MarioNN/Play_Mario.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MarioNN/Play_Mario.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AI_Plays_Mario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AI_Plays_Mario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Play_Mario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Play_Mario.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -56,11 +35,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/AI_Plays_Mario.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="367">
-              <caret line="313" column="37" lean-forward="true" selection-start-line="313" selection-start-column="37" selection-end-line="313" selection-end-column="37" />
+            <state relative-caret-position="146">
+              <caret line="105" column="89" selection-start-line="105" selection-start-column="89" selection-end-line="105" selection-end-column="89" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AD_Neural_Network_Stuff/AD_NN/NeuralNetwork.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="215">
+              <caret line="114" column="34" selection-start-line="114" selection-start-column="34" selection-end-line="114" selection-end-column="34" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -76,11 +67,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Play_Mario.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="418">
-              <caret line="197" column="25" lean-forward="true" selection-start-line="197" selection-start-column="25" selection-end-line="197" selection-end-column="64" />
+            <state relative-caret-position="-782">
+              <caret line="78" column="24" lean-forward="true" selection-start-line="78" selection-start-column="24" selection-end-line="78" selection-end-column="24" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://$USER_HOME$/Desktop/processing-3.5.3/core/library/core.jar!/processing/core/PApplet.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="352">
+              <caret line="1797" column="33" lean-forward="true" selection-start-line="1797" selection-start-column="33" selection-end-line="1797" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -88,49 +88,38 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/marioGame/Collider.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="265">
-              <caret line="23" column="30" lean-forward="true" selection-start-line="23" selection-start-column="30" selection-end-line="23" selection-end-column="30" />
-              <folding>
-                <element signature="e#1425#1426#0" expanded="true" />
-                <element signature="e#1457#1458#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="391">
+              <caret line="23" column="30" selection-start-line="23" selection-start-column="30" selection-end-line="23" selection-end-column="30" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/marioGame/Mario.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="470">
-              <caret line="271" column="25" lean-forward="true" selection-start-line="271" selection-start-column="25" selection-end-line="271" selection-end-column="25" />
+            <state relative-caret-position="-34">
+              <caret line="87" column="3" lean-forward="true" selection-start-line="87" selection-start-column="3" selection-end-line="87" selection-end-column="3" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#7547#7548#0" expanded="true" />
                 <element signature="e#7575#7576#0" expanded="true" />
+                <element signature="e#7680#7681#0" expanded="true" />
                 <element signature="e#7705#7706#0" expanded="true" />
+                <element signature="e#7736#7737#0" expanded="true" />
                 <element signature="e#7763#7764#0" expanded="true" />
+                <element signature="e#7804#7805#0" expanded="true" />
                 <element signature="e#7836#7837#0" expanded="true" />
+                <element signature="e#7863#7864#0" expanded="true" />
                 <element signature="e#7887#7888#0" expanded="true" />
+                <element signature="e#7917#7918#0" expanded="true" />
                 <element signature="e#7944#7945#0" expanded="true" />
+                <element signature="e#8249#8250#0" expanded="true" />
                 <element signature="e#8280#8281#0" expanded="true" />
+                <element signature="e#8306#8307#0" expanded="true" />
                 <element signature="e#8331#8332#0" expanded="true" />
               </folding>
             </state>
           </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pics/mario/duckleft.png">
-          <provider selected="true" editor-type-id="images" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pics/mario/fastleft2.png">
-          <provider selected="true" editor-type-id="images" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pics/mario/fastright3.png">
-          <provider selected="true" editor-type-id="images" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -172,6 +161,7 @@
       <find>setyl</find>
       <find>212</find>
       <find>height</find>
+      <find>setS</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -221,10 +211,10 @@
         <option value="$PROJECT_DIR$/src/AI_Plays_Mario2.java" />
         <option value="$PROJECT_DIR$/src/Controller.java" />
         <option value="$PROJECT_DIR$/src/marioGame/Bullet.java" />
-        <option value="$PROJECT_DIR$/src/Play_Mario.java" />
         <option value="$PROJECT_DIR$/src/marioGame/Collider.java" />
-        <option value="$PROJECT_DIR$/src/AI_Plays_Mario.java" />
         <option value="$PROJECT_DIR$/src/marioGame/Mario.java" />
+        <option value="$PROJECT_DIR$/src/Play_Mario.java" />
+        <option value="$PROJECT_DIR$/src/AI_Plays_Mario.java" />
       </list>
     </option>
   </component>
@@ -240,6 +230,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -250,51 +241,7 @@
             <path>
               <item name="MarioNN" type="b2602c69:ProjectViewProjectNode" />
               <item name="MarioNN" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MarioNN" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MarioNN" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MarioNN" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MarioNN" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
-              <item name="MarioNN_jar" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MarioNN" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MarioNN" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MarioNN" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MarioNN" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="AD_Neural_Network_Stuff" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MarioNN" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MarioNN" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="AD_Neural_Network_Stuff" type="462c0819:PsiDirectoryNode" />
-              <item name="AD_NEAT" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MarioNN" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MarioNN" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="AD_Neural_Network_Stuff" type="462c0819:PsiDirectoryNode" />
-              <item name="AD_NN" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MarioNN" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MarioNN" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="marioGame" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="MarioNN" type="b2602c69:ProjectViewProjectNode" />
@@ -304,7 +251,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -409,19 +355,18 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13432837" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13539445" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
       <window_info id="UI Designer" order="4" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
-      <window_info anchor="bottom" id="Dependency Viewer" weight="0.32936078" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32936078" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946696" weight="0.27410617" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49946696" visible="true" weight="0.27410617" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39869988" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -430,6 +375,7 @@
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.50053304" side_tool="true" weight="0.29035753" />
       <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.32719395" />
+      <window_info anchor="bottom" id="Dependency Viewer" order="11" weight="0.32936078" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -571,20 +517,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/META-INF/MANIFEST.MF">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/META-INF/MANIFEST.MF" />
     <entry file="file://$APPLICATION_CONFIG_DIR$/idea64.exe.vmoptions">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="13" selection-start-line="13" selection-end-line="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/Desktop/processing-3.5.3/core/library/core.jar!/processing/core/PApplet.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="5125" column="23" selection-start-line="5125" selection-start-column="23" selection-end-line="5125" selection-end-column="23" />
         </state>
       </provider>
     </entry>
@@ -650,16 +587,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AD_Neural_Network_Stuff/AD_NN/NeuralNetwork.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="611">
-          <caret line="102" column="61" selection-start-line="102" selection-start-column="61" selection-end-line="102" selection-end-column="61" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AD_Neural_Network_Stuff/AD_NEAT/Genome.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-3706">
@@ -680,39 +607,78 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pics/mario/fastright3.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pics/mario/left.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/pics/bigBullet.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pics/smallBullet.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pics/mario/fastleft2.png">
-      <provider selected="true" editor-type-id="images" />
+    <entry file="file://$PROJECT_DIR$/src/marioGame/Collider.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" column="30" selection-start-line="23" selection-start-column="30" selection-end-line="23" selection-end-column="30" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pics/mario/duckleft.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/marioGame/Collider.java">
+    <entry file="file://$PROJECT_DIR$/src/pics/mario/fastleft2.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pics/mario/fastright3.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pics/mario/left.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AD_Neural_Network_Stuff/AD_NN/NeuralNetwork.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="265">
-          <caret line="23" column="30" lean-forward="true" selection-start-line="23" selection-start-column="30" selection-end-line="23" selection-end-column="30" />
+        <state relative-caret-position="215">
+          <caret line="114" column="34" selection-start-line="114" selection-start-column="34" selection-end-line="114" selection-end-column="34" />
           <folding>
-            <element signature="e#1425#1426#0" expanded="true" />
-            <element signature="e#1457#1458#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/Desktop/processing-3.5.3/core/library/core.jar!/processing/core/PApplet.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="1797" column="33" lean-forward="true" selection-start-line="1797" selection-start-column="33" selection-end-line="1797" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/marioGame/Mario.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-34">
+          <caret line="87" column="3" lean-forward="true" selection-start-line="87" selection-start-column="3" selection-end-line="87" selection-end-column="3" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#7547#7548#0" expanded="true" />
+            <element signature="e#7575#7576#0" expanded="true" />
+            <element signature="e#7680#7681#0" expanded="true" />
+            <element signature="e#7705#7706#0" expanded="true" />
+            <element signature="e#7736#7737#0" expanded="true" />
+            <element signature="e#7763#7764#0" expanded="true" />
+            <element signature="e#7804#7805#0" expanded="true" />
+            <element signature="e#7836#7837#0" expanded="true" />
+            <element signature="e#7863#7864#0" expanded="true" />
+            <element signature="e#7887#7888#0" expanded="true" />
+            <element signature="e#7917#7918#0" expanded="true" />
+            <element signature="e#7944#7945#0" expanded="true" />
+            <element signature="e#8249#8250#0" expanded="true" />
+            <element signature="e#8280#8281#0" expanded="true" />
+            <element signature="e#8306#8307#0" expanded="true" />
+            <element signature="e#8331#8332#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Play_Mario.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="197" column="25" lean-forward="true" selection-start-line="197" selection-start-column="25" selection-end-line="197" selection-end-column="64" />
+        <state relative-caret-position="-782">
+          <caret line="78" column="24" lean-forward="true" selection-start-line="78" selection-start-column="24" selection-end-line="78" selection-end-column="24" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -721,28 +687,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AI_Plays_Mario.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="367">
-          <caret line="313" column="37" lean-forward="true" selection-start-line="313" selection-start-column="37" selection-end-line="313" selection-end-column="37" />
+        <state relative-caret-position="146">
+          <caret line="105" column="89" selection-start-line="105" selection-start-column="89" selection-end-line="105" selection-end-column="89" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/marioGame/Mario.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="470">
-          <caret line="271" column="25" lean-forward="true" selection-start-line="271" selection-start-column="25" selection-end-line="271" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#7575#7576#0" expanded="true" />
-            <element signature="e#7705#7706#0" expanded="true" />
-            <element signature="e#7763#7764#0" expanded="true" />
-            <element signature="e#7836#7837#0" expanded="true" />
-            <element signature="e#7887#7888#0" expanded="true" />
-            <element signature="e#7944#7945#0" expanded="true" />
-            <element signature="e#8280#8281#0" expanded="true" />
-            <element signature="e#8331#8332#0" expanded="true" />
           </folding>
         </state>
       </provider>
