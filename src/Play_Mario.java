@@ -90,7 +90,7 @@ public class Play_Mario extends PApplet{
             groundTiles.add(new Ground(i * 16, height-32, mainApplet, ground, ground2));
         }
 
-        bullet = new Bullet((width + (random.nextInt(width / scale) * scale)), height-130, mainApplet, smallBullet);
+        bullet = new Bullet((width + (random.nextInt(width / scale) * scale)), height-70, mainApplet, smallBullet);
 
 
         textFont(createFont("Arial",15,true),15);
@@ -156,8 +156,8 @@ public class Play_Mario extends PApplet{
 
         if(!mario.isDead()) {
             mario.setKeydown(keyDown);
-            mario.setKeyleft(keyLeft);
-            mario.setKeyright(keyRight);
+//            mario.setKeyleft(keyLeft);
+            mario.setKeyright(true);
             mario.setKeyup(keyUp);
             mario.show();
 

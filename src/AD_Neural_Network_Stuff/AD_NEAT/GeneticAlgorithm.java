@@ -99,13 +99,14 @@ public class GeneticAlgorithm implements GA, Serializable {
             float score = evaluateGenome(genome);
             float adjustedScore = score / mappedGenomesToSpecies.get(genome).members.size();
 
-            species.addAdjustedFitness(adjustedScore);
-            genome.setFitness(adjustedScore);
-            mappedScoreToGenomes.put(genome, adjustedScore);
             if (score > highestScore) {
                 highestScore = score;
                 fittestGenome = genome;
             }
+
+            species.addAdjustedFitness(adjustedScore);
+            genome.setFitness(adjustedScore);
+            mappedScoreToGenomes.put(genome, adjustedScore);
         }
 
         for (Species species : species) {

@@ -40,6 +40,8 @@ public class AI_Plays_Mario extends PApplet{
 
     private int pauseCounter = 0;
 
+    private float overallBestScore = 0f;
+
     public AI_Plays_Mario(){}
 
     public static void main(String[] args){
@@ -84,14 +86,13 @@ public class AI_Plays_Mario extends PApplet{
         PImage smallBullet = loadImage("pics/smallBullet.png");
 
 
-        frameRate(120);
+        frameRate(240);
 
         background(200);
 
         pipes = new ArrayList<>();
         groundTiles = new ArrayList<>();
         marios = new ArrayList<>();
-
 
         for(int i = 0; i < 10; i++) {
             pipes.add(new Pipe(i * 2 * scale + width, height-80, mainApplet, pipe));
@@ -103,7 +104,7 @@ public class AI_Plays_Mario extends PApplet{
             marios.add(new Mario( width/2f, height-60, mainApplet, marioAnimations, i));
         }
 
-        bullet = new Bullet((width + (random.nextInt(width / scale) * scale)), height-150, mainApplet, smallBullet);
+        bullet = new Bullet((width + (random.nextInt(width / scale) * scale)), height-70, mainApplet, smallBullet);
 
         if(dynamic && world) {
             Genome start = new Genome();
@@ -114,14 +115,14 @@ public class AI_Plays_Mario extends PApplet{
 
             start.addNodeGene(new NodeGene(NodeGene.TYPE.OUTPUT, i, 1));
             start.addNodeGene(new NodeGene(NodeGene.TYPE.OUTPUT, i + 1, 1));
-            start.addNodeGene(new NodeGene(NodeGene.TYPE.OUTPUT, i + 2, 1));
-            start.addNodeGene(new NodeGene(NodeGene.TYPE.OUTPUT, i + 3, 1));
+//            start.addNodeGene(new NodeGene(NodeGene.TYPE.OUTPUT, i + 2, 1));
+//            start.addNodeGene(new NodeGene(NodeGene.TYPE.OUTPUT, i + 3, 1));
             Innovations innovations = new Innovations();
 
             ga = new AD_Neural_Network_Stuff.AD_NEAT.GeneticAlgorithm(100, start, innovations, world);
             ga.remap();
         }else if(world){
-            ga = new AD_Neural_Network_Stuff.AD_NN.GeneticAlgorithm(100, 200, 3, 8, 4, false);
+            ga = new AD_Neural_Network_Stuff.AD_NN.GeneticAlgorithm(100, 200, 3, 8, 2, false);
             ga.remap();
         }else if(dynamic){
             Genome start = new Genome();
@@ -132,8 +133,8 @@ public class AI_Plays_Mario extends PApplet{
 
             start.addNodeGene(new NodeGene(NodeGene.TYPE.OUTPUT, i, 1));
             start.addNodeGene(new NodeGene(NodeGene.TYPE.OUTPUT, i + 1, 1));
-            start.addNodeGene(new NodeGene(NodeGene.TYPE.OUTPUT, i + 2, 1));
-            start.addNodeGene(new NodeGene(NodeGene.TYPE.OUTPUT, i + 3, 1));
+//            start.addNodeGene(new NodeGene(NodeGene.TYPE.OUTPUT, i + 2, 1));
+//            start.addNodeGene(new NodeGene(NodeGene.TYPE.OUTPUT, i + 3, 1));
             Innovations innovations = new Innovations();
 
             if(ga == null){
@@ -145,7 +146,7 @@ public class AI_Plays_Mario extends PApplet{
             ga.remap();
         }else{
             if(ga == null){
-                ga = new AD_Neural_Network_Stuff.AD_NN.GeneticAlgorithm(100, 5, 3, 8, 4, false);
+                ga = new AD_Neural_Network_Stuff.AD_NN.GeneticAlgorithm(100, 5, 3, 8, 2, false);
             }else{
                 prepareToVisualize(ga.getFittest());
             }
@@ -165,8 +166,8 @@ public class AI_Plays_Mario extends PApplet{
 
         fill(0);
         text("Generation: " + ga.getGeneration(),  450, 25);
-        text("Highest Fitness: " + df.format(ga.getHighestFitness()), 450, 50);
-
+        text("Best of Generation: " + df.format(ga.getHighestFitness()), 450, 50);
+        text("Overall best score: " + df.format(overallBestScore), 450, 75);
 
         float maxSpeed = 1.47f;
         boolean allDead = true;
@@ -220,8 +221,26 @@ public class AI_Plays_Mario extends PApplet{
         if(x + width/2f > bullet.getxLocation()) {
             bullet.show();
             bullet.setxLocation(bullet.getxLocation() - maxSpeed*1.5f);
+//            bullet.setxLocation(bullet.getxLocation() - maxSpeed);
+
             if(bullet.getxLocation() < 0 - bullet.getWidth()){
                 bullet.setxLocation((width + (random.nextInt(width / scale) * scale)));
+//                int xLoc = (width + (random.nextInt(width / scale) * scale));
+//                for(int i = 0; i < 250; i++) {
+//                    boolean good = true;
+//                    for(Pipe q : pipes){
+//                        if(xLoc >= q.getxLocation() && xLoc <= q.getxLocation()+q.getWidth()){
+//                            good = false;
+//                            break;
+//                        }
+//                    }
+//                    if(good){
+//                        bullet.setxLocation(xLoc);
+//                        break;
+//                    }else{
+//                        xLoc = (width + (random.nextInt(width / scale) * scale));
+//                    }
+//                }
             }
         }
 
@@ -291,9 +310,10 @@ public class AI_Plays_Mario extends PApplet{
                     out = ga.getGenome(m.getId()).compute(inputs);
                 }
                 m.setKeydown(out.get(0) > .5);
-                m.setKeyleft(out.get(1) > .5);
-                m.setKeyright(out.get(2) > .5);
-                m.setKeyup(out.get(3) > .5);
+//                m.setKeyleft(out.get(1) > .5);
+//                m.setKeyright(out.get(2) > .5);
+                m.setKeyright(true);
+                m.setKeyup(out.get(1) > .5);
                 m.show();
 
                 maxSpeed = 1.47f;
@@ -343,6 +363,10 @@ public class AI_Plays_Mario extends PApplet{
 
                 x = width/2f;
                 prepareToVisualize(ga.getFittest());
+                if(ga.getHighestFitness() > overallBestScore){
+                    overallBestScore = ga.getHighestFitness();
+                    System.out.println(overallBestScore);
+                }
             }
             if(pauseCounter > 180) {
                 for (Mario m : marios) {
