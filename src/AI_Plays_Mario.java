@@ -94,6 +94,7 @@ public class AI_Plays_Mario extends PApplet{
         groundTiles = new ArrayList<>();
         marios = new ArrayList<>();
 
+        //Creating marios, pipes, ground and bullet
         for(int i = 0; i < 10; i++) {
             pipes.add(new Pipe(i * 2 * scale + width, height-80, mainApplet, pipe));
         }
@@ -115,8 +116,6 @@ public class AI_Plays_Mario extends PApplet{
 
             start.addNodeGene(new NodeGene(NodeGene.TYPE.OUTPUT, i, 1));
             start.addNodeGene(new NodeGene(NodeGene.TYPE.OUTPUT, i + 1, 1));
-//            start.addNodeGene(new NodeGene(NodeGene.TYPE.OUTPUT, i + 2, 1));
-//            start.addNodeGene(new NodeGene(NodeGene.TYPE.OUTPUT, i + 3, 1));
             Innovations innovations = new Innovations();
 
             ga = new AD_Neural_Network_Stuff.AD_NEAT.GeneticAlgorithm(100, start, innovations, world);
@@ -133,8 +132,6 @@ public class AI_Plays_Mario extends PApplet{
 
             start.addNodeGene(new NodeGene(NodeGene.TYPE.OUTPUT, i, 1));
             start.addNodeGene(new NodeGene(NodeGene.TYPE.OUTPUT, i + 1, 1));
-//            start.addNodeGene(new NodeGene(NodeGene.TYPE.OUTPUT, i + 2, 1));
-//            start.addNodeGene(new NodeGene(NodeGene.TYPE.OUTPUT, i + 3, 1));
             Innovations innovations = new Innovations();
 
             if(ga == null){
@@ -172,6 +169,7 @@ public class AI_Plays_Mario extends PApplet{
         float maxSpeed = 1.47f;
         boolean allDead = true;
 
+        //Loop through the pipes and move them, if they go out of bounds randomly place them to the right
         for (Pipe p : pipes) {
             if(x + width/2f > p.getxLocation()) {
                 p.show();
@@ -196,6 +194,7 @@ public class AI_Plays_Mario extends PApplet{
                 }
             }
 
+            //Update pipe location in world view
             int loc;
             if(p.getxLocation() > 0 && p.getxLocation() < width){
                 loc = (int)(p.getxLocation()/scale);
@@ -217,34 +216,17 @@ public class AI_Plays_Mario extends PApplet{
             }
         }
 
-
+        //Move the bullet if it goes out of bounds randomly move it to the right.
         if(x + width/2f > bullet.getxLocation()) {
             bullet.show();
             bullet.setxLocation(bullet.getxLocation() - maxSpeed*1.5f);
-//            bullet.setxLocation(bullet.getxLocation() - maxSpeed);
-
             if(bullet.getxLocation() < 0 - bullet.getWidth()){
                 bullet.setxLocation((width + (random.nextInt(width / scale) * scale)));
-//                int xLoc = (width + (random.nextInt(width / scale) * scale));
-//                for(int i = 0; i < 250; i++) {
-//                    boolean good = true;
-//                    for(Pipe q : pipes){
-//                        if(xLoc >= q.getxLocation() && xLoc <= q.getxLocation()+q.getWidth()){
-//                            good = false;
-//                            break;
-//                        }
-//                    }
-//                    if(good){
-//                        bullet.setxLocation(xLoc);
-//                        break;
-//                    }else{
-//                        xLoc = (width + (random.nextInt(width / scale) * scale));
-//                    }
-//                }
             }
         }
 
 
+        //Update bullet location in pipe view
         int loc;
         if(bullet.getxLocation() > 0 && bullet.getxLocation() < width){
             loc = (int)((bullet.getxLocation()+bullet.getWidth()/2)/scale);
@@ -252,7 +234,8 @@ public class AI_Plays_Mario extends PApplet{
             worldView.set(loc, 1f);
         }
 
-
+        //Loop through the groundTiles and move them,
+        // if they go out of bounds move them to the end of the right to create infinite ground :)
         for(Ground g : groundTiles){
             g.show();
             g.setxLocation(g.getxLocation() - maxSpeed);
@@ -262,6 +245,7 @@ public class AI_Plays_Mario extends PApplet{
                 g.setxLocation(g.getxLocation() - width - 16);
             }
 
+            //add pipes to world view, in case I want to add holes in the ground at some point :0
             if(g.getxLocation() > 0 && g.getxLocation() < width){
                 loc = (int)(g.getxLocation()/scale);
                 loc += (int)(g.getyLocation()/scale * width/scale);
@@ -269,13 +253,17 @@ public class AI_Plays_Mario extends PApplet{
             }
         }
 
+
+        //Loop through all marios
         for(Mario m : marios){
+            //If mario goes out of bounds he loses.
             if(m.getxLocation() < 0 - m.getWidth()){
                 m.setDead(true);
             }
 
 
             if(!m.isDead()) {
+                //Put mario in world view
                 loc = (int)(m.getxLocation()/scale) + (int)((m.getyLocation())/scale) * (width/scale);
                 Float oldVal = worldView.get(loc);
                 worldView.set(loc, 9999f);
@@ -287,6 +275,7 @@ public class AI_Plays_Mario extends PApplet{
                 float closest = 9999;
                 float secondClosest = 9999;
 
+                //find closest pipe
                 for(Pipe p : pipes){
                     float distance = p.getxLocation()-m.getxLocation();
                     if(distance > 0 && distance < closest){
@@ -297,21 +286,21 @@ public class AI_Plays_Mario extends PApplet{
                     }
                 }
 
+                //give mario his input
                 inputs.set(0, m.getyLocation());
-//                inputs.set(1, m.getxLocation());
                 inputs.set(1, m.getJump());
                 inputs.set(2, closest-m.getWidth());
                 inputs.set(3, secondClosest-closest-32);
                 inputs.set(4, bullet.getxLocation() - m.getxLocation());
 
+                //Compute what the network outputs are
                 if(world) {
                     out = ga.getGenome(m.getId()).compute(worldView);
                 }else{
                     out = ga.getGenome(m.getId()).compute(inputs);
                 }
+                //DO what the network says
                 m.setKeydown(out.get(0) > .5);
-//                m.setKeyleft(out.get(1) > .5);
-//                m.setKeyright(out.get(2) > .5);
                 m.setKeyright(true);
                 m.setKeyup(out.get(1) > .5);
                 m.show();
@@ -319,8 +308,10 @@ public class AI_Plays_Mario extends PApplet{
                 maxSpeed = 1.47f;
                 boolean onTop = false;
 
+                //move mario
                 m.setxLocation(m.getxLocation() - maxSpeed + m.getSpeed());
 
+                //check collision between mario and pipes and act accordingly
                 for (Pipe p : pipes) {
                     int collision = m.checkCollision(p);
                     if (collision == 1) {
@@ -337,7 +328,7 @@ public class AI_Plays_Mario extends PApplet{
                     }
                 }
 
-
+                //kill mario if he hits the bullet
                 int collision = m.checkCollision(bullet);
                 if(collision == 1){
                     m.setDead(true);
@@ -357,6 +348,7 @@ public class AI_Plays_Mario extends PApplet{
 
 
         if(allDead){
+            //Reset everything if all marios died
             if(once){
                 ga.evaluate();
                 ga.remap();
@@ -365,7 +357,6 @@ public class AI_Plays_Mario extends PApplet{
                 prepareToVisualize(ga.getFittest());
                 if(ga.getHighestFitness() > overallBestScore){
                     overallBestScore = ga.getHighestFitness();
-                    System.out.println(overallBestScore);
                 }
             }
             if(pauseCounter > 180) {
@@ -420,6 +411,7 @@ public class AI_Plays_Mario extends PApplet{
         }
     }
 
+    //Don't worry about this, just draws the brain
     private void visualizeBrain(Brain brain, List<Float> worldview ){
         if(world) {
             for (int i = 0; i < width / scale; i++) {
@@ -500,6 +492,7 @@ public class AI_Plays_Mario extends PApplet{
         }
     }
 
+    //Helper for drawing the brain
     private void prepareToVisualize(Brain brain){
         nodePositions.clear();
 

@@ -81,6 +81,7 @@ public class Play_Mario extends PApplet{
         pipes = new ArrayList<>();
         groundTiles = new ArrayList<>();
 
+        //Creating mario, pipes, ground and bullet
         mario = new Mario( width/2f, height-60, mainApplet, marioAnimations, 0);
 
         for(int i = 0; i < 10; i++) {
@@ -105,6 +106,7 @@ public class Play_Mario extends PApplet{
         text("Generation: " + generation,  25, 100);
         text("Highest Fitness: " + df.format(highScore), 25, 125);
 
+        //Loop through the pipes and move them, if they go out of bounds randomly place them to the right
         for (Pipe p : pipes) {
             if(x + width/2f > p.getxLocation()) {
                 p.show();
@@ -130,6 +132,7 @@ public class Play_Mario extends PApplet{
             }
         }
 
+        //Move the bullet if it goes out of bounds randomly move it to the right.
         if(x + width/2f > bullet.getxLocation()) {
             bullet.show();
             bullet.setxLocation(bullet.getxLocation() - maxSpeed*1.5f);
@@ -138,6 +141,8 @@ public class Play_Mario extends PApplet{
             }
         }
 
+        //Loop through the groundTiles and move them,
+        // if they go out of bounds move them to the end of the right to create infinite ground :)
         for(Ground g : groundTiles){
             g.show();
             g.setxLocation(g.getxLocation() - maxSpeed);
@@ -148,7 +153,7 @@ public class Play_Mario extends PApplet{
             }
         }
 
-
+        //If mario goes out of bounds he loses.
         if(mario.getxLocation() < 0 - mario.getWidth()){
             mario.setDead(true);
         }
@@ -156,6 +161,7 @@ public class Play_Mario extends PApplet{
 
         if(!mario.isDead()) {
             mario.setKeydown(keyDown);
+            //if you want to add the ability to go left
 //            mario.setKeyleft(keyLeft);
             mario.setKeyright(true);
             mario.setKeyup(keyUp);
@@ -164,9 +170,10 @@ public class Play_Mario extends PApplet{
 
 
             boolean onTop = false;
-
+            //move mario
             mario.setxLocation(mario.getxLocation() - maxSpeed + mario.getSpeed());
 
+            //check collision between mario and pipes and act accordingly
             for (Pipe p : pipes) {
                 int collision = mario.checkCollision(p);
                 if (collision == 1) {
@@ -183,7 +190,7 @@ public class Play_Mario extends PApplet{
                 }
             }
 
-
+            //kill mario if he hits the bullet
             int collision = mario.checkCollision(bullet);
             if(collision == 1){
                 mario.setDead(true);
@@ -192,6 +199,7 @@ public class Play_Mario extends PApplet{
             once = true;
             x += maxSpeed;
         }else{
+            //Reset everything if mario died
             if(once){
                 x = width/2f;
                 if(mario.getDistance() > highScore){
