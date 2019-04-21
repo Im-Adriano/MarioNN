@@ -43,7 +43,6 @@ public class Play_Mario extends PApplet{
 
     public void setup()
     {
-
         PApplet mainApplet = this;
         mainApplet.getSurface().setResizable(false);
         setDefaultClosePolicy(this, false);
